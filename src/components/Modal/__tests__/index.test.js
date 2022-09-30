@@ -28,3 +28,17 @@ describe('Modal component', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 });
+
+// Arrange: Render Modal
+// Act: Simulate click event
+// Assert: Expected matcher
+describe('Click Event', () => {
+  it('calls onClose handler', () => {
+    const { getByText } = render(
+      <Modal onClose={mockToggleModal} currentPhoto={currentPhoto} />
+    );
+    fireEvent.click(getByText('Close this modal'));
+
+    expect(mockToggleModal).toHaveBeenCalledTimes(1);
+  });
+});
